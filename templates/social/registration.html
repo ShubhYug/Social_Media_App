@@ -1,0 +1,24 @@
+ 
+{% extends 'social/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+
+{% block content %} 
+<h1> Hello Home page</h1>
+<form method="POST" action="" enctype="multipart/form-data">  
+    {% csrf_token %}  
+
+    {{form.as_p}}
+
+<div class="col-sm-4">  
+<button type="submit" class="btn btn-primary">Submit</button>  
+</div>  
+ 
+</form>
+
+
+
+
+
+{% endblock %} 

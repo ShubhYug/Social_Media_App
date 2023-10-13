@@ -1,0 +1,111 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Index</title>  
+    {% load static %}  
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+</head>  
+<body>  
+  <h2>edit_data.html</h2>
+<form method="POST" class="post-form" action="/edit_data/{{student.id}}">  
+        {% csrf_token %}  
+    <div class="container">  
+<br>  
+    <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <h3>Update Details</h3>  
+    </div>  
+  </div>  
+    <div class="form-group row">    
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">First Name:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="first_name" id="first_name" required maxlength="100" value="{{ student.first_name }} " />  
+    </div>  
+  </div>  
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Last Name:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="last_name" id="last_name" required maxlength="100" value="{{ student.last_name }} " />  
+    </div>  
+  </div>
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Email:</label>  
+    <div class="col-sm-4">  
+        <input type="email" name="email" id="email" required maxlength="254" value="{{ student.email }}" />  
+    </div>  
+  </div>  
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Bio:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="bio" id="bio" required maxlength="254" value="{{ student.bio }}" />  
+    </div>  
+  </div> 
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Work:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="work" id="work" required maxlength="254" value="{{ student.work }}" />  
+    </div>  
+  </div> 
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Education:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="education" id="education" required maxlength="254" value="{{ student.education }}" />  
+    </div>  
+  </div> 
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Hobbies:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="hobbies" id="hobbies" required maxlength="254" value="{{ student.hobbies }}" />  
+    </div>  
+  </div> 
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Link:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="link" id="link" required maxlength="254" value="{{ student.link }}" />  
+    </div>  
+  </div> 
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Image:</label>  
+    <div class="col-sm-4">  
+        <input type="image" name="image" id="image" value="{{ student.image }}" />  
+    </div>  
+  </div> 
+
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Relationship:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="relationship" id="relationship" required maxlength="254" value="{{ student.relationship }}" />  
+    </div>  
+  </div>
+
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Followers:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="followers" id="followers" required maxlength="254" value="{{ student.followers }}" />  
+  </div>  
+</div> 
+<div class="form-group row">  
+  <label class="col-sm-2 col-form-label">Following:</label>  
+  <div class="col-sm-4">  
+      <input type="text" name="following" id="following" required maxlength="254" value="{{ student.following }}" />  
+  </div>  
+</div>  
+  <div class="form-group row">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="btn btn-success">Update</button>  
+    </div>  
+  </div>  
+    </div>  
+</form>  
+</body>  
+</html>  
+
+
+
+
+
+ 

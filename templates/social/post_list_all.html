@@ -1,0 +1,69 @@
+{% extends "social/base.html" %}
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <h1>Public Post List</h1> 
+  <hr>
+  <ul>
+    
+  </ul>
+  <a href="{% url 'create_post' %}"><button type="button" class="btn btn-primary btn-lg"><i class="fa-solid fa-pen">Create Post</i></button></a>
+<br>
+<h2><i class="fa-solid fa-face-smile-wink">Hello</i> </h2>
+{% for post in form %}
+
+
+<div class="row ">
+  <div class="col-md-6 center-block d-flex justify-content-center">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250"style="background-color: #55BCC9;">
+      <div style="background-color:  #E8A87C;" class="card-body d-flex flex-column align-items-start">
+        <h7><a href="{% url 'friend_profile' post.user.id %}" class="profile-link"><i class="fa fa-at">{{ post.user}} {{post.user.id}}</i></a></h7>
+        <!-- <strong class="d-inline-block mb-2 text-primary"><i class="fa fa-at">{{ post.user }}</i></strong> -->
+        <h3 class="mb-0">
+          <a class="text-dark" href="#"><em>{{ post.content}}</em> </a>
+        </h3>
+        <small>Post Id : {{ post.id }}</small>
+        <div class="mb-1 text-muted"><small>{{ post.created_at }}</small></div>
+
+        <!-- <h2>P==L:{{count}}{{like_action}}</h2> -->
+        {% for like in like_action %}
+          <!-- {% if post.id == like_action %} -->
+            <h2>P==L:{{count}}{{like}}</h2>
+          <!-- {% endif %} -->
+        {% endfor %}
+
+
+        <!-- <p>{{count}}</p> -->
+        {% if post.id in like_action %}
+          <a href="{% url 'all_dislike_post' post.id %}"><i class="fa-solid fa-heart"><small> DisLike</small></i></a>
+        {% else %}
+          <a href="{% url 'all_like_post' post.id %}"><i class="fa-regular fa-heart"><small> Like</small></i></a>
+        {% endif %}
+
+
+
+        <a href="{% url 'show_comment' post.id %}"><i class="fa-regular fa-comments"> Comment</i></a>
+
+
+
+          <form action="{% url 'comment_post' post.id %}" method="POST">
+
+        <!-- Comments Section -->
+        <form action="comment_post/{{post.id}}/" method="POST">
+          {% csrf_token %}
+          <input type="text" placeholder="@Comment" name="text">
+          <button type="submit"class="btn btn-info btn-sm"><i class="fa-solid fa-check"> Submit</i></button>
+      </form>
+
+      </div>
+      <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 300px; height: 250px;" src="{{ post.post_image.url }}" data-holder-rendered="true">
+    </div>
+  </div>
+
+</div>
+{% endfor %}  
+
+
+ 
+
+{% endblock %}

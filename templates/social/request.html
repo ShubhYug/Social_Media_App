@@ -1,0 +1,65 @@
+{% extends 'social/base.html' %}
+
+{% block title %} Requests {% endblock %}
+
+
+{% block content %} 
+
+<h1><i class="fa-solid fa-user-plus"></i>  <i class="fa-solid fa-user-minus"></i></h1><hr>
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="people-nearby">
+                    <h4>Received Requests</h4><hr>
+{% for friend in form %}
+<div>
+    <p>{{ friend.from_user.first_name }} {{ friend.from_user.last_name }}..</p>
+    <form action="{% url 'accept_request' friend.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary btn-sm"><i class="fa-solid fa-user-plus">Accept Request</i></button>
+    </form> <br>
+    <form action="{% url 'reject_request' friend.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-secondary btn-sm"><i class="fa-solid fa-user-minus">Reject Request</i></button>
+    </form>
+
+
+
+</div>
+{% endfor %} <hr>
+<h4>Sent Requests</h4><hr>
+{% for friend in form1 %}
+<p>{{ friend.to_user.username }}</p>
+{% endfor %}
+<!-- <div style="background-color:aliceblue; width: 100%; height: 650px;">  
+  
+    <div  style="background-color:azure; width: 50%; height: 550px; float:left;">  
+        {% for friend in form %}
+        <div>
+            <h4>Received Requests</h4><hr>
+            <p>{{ friend.from_user.first_name }} {{ friend.from_user.last_name }}..</p>
+            <form action="{% url 'accept_request' friend.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary btn-sm">Accept Request</button>
+            </form> <br>
+            <form action="{% url 'reject_request' friend.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary btn-sm">Reject Request</button>
+            </form>
+        
+        
+        
+        </div>
+        {% endfor %} 
+    </div>  
+
+    <div style="background-color:beige; width:50%; height: 550px; float:left;">  
+        <h4>Sent Requests</h4><hr>
+        {% for friend in form1 %}
+        <p>{{ friend.to_user.username }}</p>
+        {% endfor %}  
+    </div>  
+</div>   -->
+</div></div></div></div></div>
+{% endblock %}

@@ -1,0 +1,13 @@
+1.Create post
+2.update post
+3.like & dislike post
+4.comment post
+5.create profile
+6.update profile
+7.send friend request
+8.accept friend request
+9.see all pepoles
+10.see mutal friends
+11. friend request notification
+12. Request notification
+

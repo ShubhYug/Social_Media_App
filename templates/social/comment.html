@@ -1,0 +1,51 @@
+ 
+{% extends 'social/base.html' %}
+
+{% block title %} Profile {% endblock %}
+
+
+{% block content %} 
+
+{% for post in post %}
+<br>
+<div class="row ">
+  <div class="col-md-6 center-block d-flex justify-content-center">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-primary">{{ post.user }}</strong>
+        <h2 class="mb-0">
+          <a class="text-dark" href="#">{{ post.content}} </a>
+        </h2>
+      </div>
+      <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 300px; height: 250px;" src="{{ post.post_image.url }}" data-holder-rendered="true">
+    </div>
+  </div>
+</div>
+{% endfor %} <hr style="height:10px">
+<br>
+{% for frm in form %}
+   Comment By:-{{frm.user}} <br>
+    id {{frm.id}} <br>
+    post id {{frm.post_id}} <br>
+
+    <h3><i class="fa-regular fa-comment">{{frm.text}}</i></h3> <br>
+
+    {{frm.created_at}} <br> 
+
+    {% if frm.user == request.user %}
+    <a href="/update_comment/{{ frm.id }}"><span class="glyphicon glyphicon-pencil" ><button class="btn btn-primary"><i class="fa-solid fa-file-pen"> Edit</i></button>  </span></a>
+    <a href="/delete_comment/{{ frm.id }}/" onclick="alert('sure want to delete this data')">  <button class="btn btn-secondary"><i class="fa-solid fa-trash"> Delete</i></button></a>
+    {% endif %}
+
+    <a href="/show_post/"><button class="btn btn-light"><i class="fa-solid fa-rotate-left"> Back to post</i> </button> </a>   
+  <hr style="height:10px">
+    {% endfor %} 
+
+    <!-- <form action="/update_comment/{{ frm.id }}" method="POST">
+  
+        {% csrf_token %}
+        <!-- {{form1}} -->
+        <!--{{form2}}
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-file-pen">Update</i></button>
+    </form> -->
+{% endblock %}

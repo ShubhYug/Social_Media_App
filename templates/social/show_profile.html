@@ -1,0 +1,55 @@
+{% extends "social/base.html" %}
+
+{% block content %} 
+{{form1.first_name}}
+{{form1.last_name}}
+    <table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">    
+    <tr>  
+        <th>ID</th>  
+        <th>First Name</th>  
+        <th>Last Name</th>  
+        <th>Email</th>  
+        <th>Bio</th>  
+        <th>Work</th>  
+        <th>Education</th>  
+        <th>Hobbies</th>  
+        <th>link</th>  
+        <th>Image</th>  
+        <th>Relationship</th>  
+        <th>Action</th>  
+        
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for user in form %}  
+<tr>       
+        <td>{{ user.id }}</td>  
+        <td>{{ user.first_name }}</td>  
+        <td>{{ user.last_name }}</td>  
+        <td>{{ user.email }}</td>  
+        <td>{{ user.bio }}</td>  
+        <td>{{ user.work }}</td>  
+        <td>{{ user.education }}</td>  
+        <td>{{ user.hobbies }}</td>  
+        <td>{{ user.link }}</td>  
+        <td><img src="{{ user.profile_image.url }}" alt="image"></td>
+        <td>{{ user.relationship }}</td>  
+ 
+
+        <td> 
+            <a href="/edit_profile/{{ user.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="#" onclick="alert('sure want to delete this data')">Delete</a>  
+        </td>  
+    </tr>   
+{% endfor %}  
+    </tbody>  
+</table>  
+
+
+<br>  
+<center><a href="/registration/" class="btn btn-primary">Add New Record</a></center>  
+
+{% endblock %} 
+
+

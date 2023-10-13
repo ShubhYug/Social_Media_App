@@ -1,0 +1,17 @@
+{% extends "social/base.html" %}
+
+{% block content %}
+<!-- <h2>create_post.html</h2> -->
+  <h1>Create Post</h1>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <br>
+    <h2>{{request.user}}</h2>
+  {{form.as_p}}
+    <button type="submit">Submit</button>
+  </form>
+  <a href="/">Back to Post List</a> <br><br><br>
+
+
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "social/base.html" %}
+
+{% block content %} 
+<!-- <p>user profile.</p> -->
+
+
+<br>
+<div class="container box_1620">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="banner_content">
+            <div class="media">
+                <div class="d-flex mb-9">
+                    
+                    
+                    {% for user in form %}
+
+                    <img src="{{ user.profile_image.url }}" width="450" class="rounded-circle" height="500" alt="wait image is loding...">
+                    <div class="col-md-3 col-sm-3">
+                        <a href="/edit_profile/{{request.user.id}}/"><button class="btn btn-primary pull-right"><i class="fa-solid fa-user-pen">Edit Profile</i></button></a>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <div class="media-body">
+                    <div class="personal_text">
+                        <h6><i class="fa-solid fa-hands-asl-interpreting">Hello My Self, i'm</i></h6>
+                        {% for form in form1 %}  
+                            <h2><i class="fa-solid ">{{ form.first_name }} {{ form.last_name }}</i></h2>
+                        {% endfor %}
+                        {% for user in form %}
+                        <h4><i class="fa-solid fa-briefcase">{{ user.work }}</i></h4>
+                        <p><i class="fa-regular fa-newspaper">{{ user.bio }}</i></p>
+                        <ul class="list basic_info">
+                            <li><a href="#"><i class="fa-solid fa-calendar-days"> 1st Sep, 2023</i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-phone"> +91-{{ user.contact }}</i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-hand-holding-heart">{{ user.relationship }} </i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-user-graduate"> {{ user.education }}</i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-football"> {{ user.hobbies }}</i></a></li>
+                        </ul>
+                        <ul class="list personal_social">
+                            <li><a href="#"><i class="fa-solid fa-link">{{ user.link }}</i></a></li>
+                            <!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
+                            {% endfor %}
+                            <br><a href="/my_post/"><button class="btn btn-primary pull-right"><i class="fa-solid fa-user-pen">My Post</i></button></a> 
+                            {% if not user.profile %}
+                        <!-- <a href="/create_profile/">Create_profile</a><br> -->
+                        <a href="/create_profile/"><button class="btn btn-primary pull-right"><i class="fa-solid fa-user-pen">Update Profile</i></button></a>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<!-- <table class="table table-striped table-bordered table-sm">  
+<thead class="thead-dark">    
+<tr>  
+    <th>ID</th>  
+    <th>First Name</th>  
+    <th>Last Name</th>  
+    <th>Email</th>  
+    <th>Bio</th>  
+    <th>Work</th>  
+    <th>Education</th>  
+    <th>Hobbies</th>  
+    <th>link</th>  
+    <th>Image</th>  
+    <th>Relationship</th>  
+    <th>Action</th>  
+    
+</tr>  
+</thead>  
+<tbody>  
+
+    <tr>       
+    <td>{{ request.user.id }}</td>  
+{% for form in form1 %}  
+    <td>{{ form.first_name }}</td>  
+    <td>{{ form.last_name }}</td>  
+    <td>{{ form.email }}</td>  
+{% endfor %}
+{% for user in form %}  
+    <td>{{ user.bio }}</td>  
+    <td>{{ user.work }}</td>  
+    <td>{{ user.education }}</td>  
+    <td>{{ user.hobbies }}</td>  
+    <td>{{ user.link }}</td>  
+    <td><img src="{{ user.profile_image.url }}" width="250" class="rounded-circle" height="300" alt="image"></td>
+    <td>{{ user.relationship }}</td>  
+
+
+    <td> 
+        <a href="/edit_profile/{{ user.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+        <a href="#" onclick="alert('sure want to delete this data')">Delete</a>  
+    </td>  
+</tr>   
+{% endfor %}  
+</tbody>  
+</table>  
+<br>  
+
+ -->
+
+{% endblock %} 

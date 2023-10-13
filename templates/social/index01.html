@@ -1,0 +1,33 @@
+{% extends 'social/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+
+{% block content %}
+<h2>index01.html</h2> 
+<h1> Hello Home page</h1>
+<!-- <a href="/profile/">Profile</a> <br>
+{% if request.user %}-->
+
+{% if request.user.is_authenticated %}
+{% else %}
+<a href="/registration/">Registration</a> <br>
+{% endif %}
+
+<!-- {% if not userprofile %}
+<a href="/create_profile/">Create_profile</a><br>
+{% else %}
+<a href="/create_profile/">update_profile</a><br>
+{% endif %}
+<a href="/create_post/">Create Post</a><br>
+<a href="/show_post/">Show Post</a><br>
+<a href="/show_data/">Show User</a><br>
+{% endif %}  -->
+<a href="/login/">Login</a><br>
+
+
+<br><br><br>
+
+
+
+{% endblock %}

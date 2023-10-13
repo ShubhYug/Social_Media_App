@@ -1,0 +1,212 @@
+ 
+{% extends 'social/base.html' %}
+
+{% block title %} Profile {% endblock %}
+
+
+{% block content %} 
+<!-- <small>profile.html</small> -->
+<!-- <h1> Welcome {{request.user.first_name}}</h1> -->
+<!-- <a href="/update_profile/">Profile</a><br> -->
+<!-- <a href="/create_profile/">Create_profile</a><br> -->
+<!-- <a href="/show_profile/">My Profile</a><br> -->
+
+
+<!-- <a href="/show_post/">All Post</a><br> -->
+<!-- <a href="/my_friend_post/">My Friend's Post</a><br> -->
+<!-- <a href="/friends/">Friend</a><br><hr> -->
+<!-- <a href="/my_friend/">My Friends</a><br> -->
+<!-- <a href="/all_request/">Request Sent/Recive</a><br>
+<a href="/friends/">All Pepole</a><br> -->
+<!-- <a href="/show_data/">Pepole</a><br> -->
+
+<!-- {% if not user.profile %}
+<a href="/create_profile/">Create_profile</a><br>
+{% else %}
+<a href="/edit_profile/{{request.user.id}}/">edit profile</a><br>
+{% endif %} -->
+
+
+ <div class="container px-4 py-5" id="custom-cards" >
+  <h2 class="pb-2 border-bottom"><i class="fa-solid fa-face-smile-wink"><h3>Welcome to My</h3>Fukrey Social Media</i></h2><br>
+{% for notification in rececive_req %}
+  {% if notification.id %}
+    <h4 class="text-danger"><i class="fa-solid fa-fire"> New Firnd Request</i></h4>  
+  {% else %}
+    <small>hhhhhh<i class="fa-regular fa-face-sad-cry"> No Notification</i></small>
+  {% endif %}
+{% endfor %} <br>
+
+
+
+  <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+    <div class="col" >
+        <div style="background-color: #66ccff;" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
+            <!-- <img src="media/profile.jpeg" alt=""> -->
+        <div class="d-flex flex-column h-100 p-5 pb-3  text-shadow-1">
+          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><i class="fa-regular fa-face-smile">Hello {{request.user.first_name}}</i> </h3>
+          <small>Click Profile</small>
+          <ul class="d-flex list-unstyled mt-auto">
+            <!-- <li class="me-auto">
+              <img src="media/profile.jpeg" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+            </li> -->
+            <li class="d-flex align-items-center me-3">
+              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+              <a href="/show_profile/"><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-square-user">My Profile</i></button></a>
+            </li>
+            <!-- <li class="d-flex align-items-center">
+              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+              <small>3d</small>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="background-color:#66ccff;" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><i class="fa-regular fa-comment-plus">Post For mutual Frineds</i></h3>
+          <small>Click to see Friends Post</small>
+          <ul class="d-flex list-unstyled mt-auto">
+            <!-- <li class="me-auto">
+              <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+            </li> -->
+            <li class="d-flex align-items-center me-3">
+              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+              
+              <a href="/my_friend_post/"><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-square-user">Friends Post</i></button></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="background-color:#66ccff;" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><i class="fa-solid fa-octagon-plus">Public Post to see and Recat you Action and enjoy.</i></h3>
+          <small>Click to see Public Post</small>
+          <ul class="d-flex list-unstyled mt-auto">
+            <!-- <li class="me-auto">
+              <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+            </li> -->
+            <li class="d-flex align-items-center me-3">
+              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+              <!-- <small>California</small> -->
+              <a href="/show_post/"><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-square-user">Public Post</i></button></a>
+            </li>
+            <!-- <li class="d-flex align-items-center">
+              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+              <small>5d</small>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+    <div class="col">
+      <div style="background-color:#66ccff;" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-1.jpg');">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><i class="fa-sharp fa-regular ">My Frined's List</i></h3>
+          <small>Click to see Friends</small>
+          <ul class="d-flex list-unstyled mt-auto">
+            <!-- <li class="me-auto">
+              <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+            </li> -->
+            <li class="d-flex align-items-center me-3">
+              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+              <!-- <small>Earth</small> -->
+              <a href="/my_friend/"><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-square-user">My Frinds</i></button></a>
+            
+            </li>
+            <!-- <li class="d-flex align-items-center">
+              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+              <small>3d</small>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="background-color:#66ccff;" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-2.jpg');">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><i class="fa-solid fa-family">All New Friend Requests</i></h3>
+          {% for notification in rececive_req %}
+            {% if notification.id%}
+            <small class="text-danger"><i class="fa-solid fa-square-user">New Notification</i></small>  
+            {% endif %}
+          {% endfor %} <br>
+          <small>Click to see all Requests</small>
+          <ul class="d-flex list-unstyled mt-auto">
+            <!-- <li class="me-auto">
+              <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+            </li> -->
+            <li class="d-flex align-items-center me-3">
+              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+              <!-- <small>Pakistan</small>-->
+              <a href="/all_request/"><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-square-user">Request Action</i></button></a>
+
+              <!-- <a href="/all_request/">Request Sent/Recive</a><br> -->
+            </li>
+            <!-- <li class="d-flex align-items-center">
+              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+              <small>4d</small>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div style="background-color:#66ccff;" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
+        <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold"><i class="fa-regular ">Explore new frnds and make Freinds </i></h3>
+          <small>Click to explore New Friends</small>
+          <ul class="d-flex list-unstyled mt-auto">
+            <!-- <li class="me-auto">
+              <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+            </li> -->
+            <li class="d-flex align-items-center me-3">
+              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+              <!-- <small>California</small> -->
+              <a href="/friends/"><button type="button" class="btn btn-primary btn-lg btn-block"><i class="fa-solid fa-square-user">New Friends</i></button></a>
+
+            </li>
+            <!-- <li class="d-flex align-items-center">
+              <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+              <small>5d</small>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+{% endblock %} 
+<!-- <div class="col">
+    <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-3.jpg');">
+      <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h3>
+        <ul class="d-flex list-unstyled mt-auto">
+          <li class="me-auto">
+            <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
+          </li>
+          <li class="d-flex align-items-center me-3">
+            <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
+            <small>California</small>
+          </li>
+          <li class="d-flex align-items-center">
+            <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
+            <small>5d</small>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div> -->

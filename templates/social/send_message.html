@@ -1,0 +1,8 @@
+
+
+<form method="post">
+    {% csrf_token %}
+    <label for="content">Message:</label>
+    <textarea name="content" id="content" rows="4" cols="50"></textarea>
+    <button type="submit">Send</button>
+</form>

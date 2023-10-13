@@ -1,0 +1,14 @@
+
+<h1>Inbox</h1>
+
+<ul>
+    {% for message in received_messages %}
+    <li>
+        <strong>From: {{ message.sender.username }}</strong>
+        <p>{{ message.content }}</p>
+        {% if not message.is_read %}
+            <p><em>Unread</em></p>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>

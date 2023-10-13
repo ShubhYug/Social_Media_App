@@ -1,0 +1,50 @@
+{% extends 'social/base.html' %}
+
+{% block title %} Home {% endblock %}
+
+
+{% block content %} 
+
+   
+    
+<div class="container mt-5" >
+    <form method="POST" action="/login/" class="col-6 max-auto card p-3 shadow-lg" style="background-color:#CAFAFE">
+        {% csrf_token %}
+
+        <div class="mb-3 mt-3">
+            <label for="username" class='from-label'><i class="fa-solid fa-face-sad">User Email id : </i></label>
+            <input type="text" id="username" name="username"class='form-control'><br>
+        </div>
+    
+        <div class="mb-3">
+            <label for="password"class='from-label'><i class="fa-solid fa-face-sad"> Password  : </i> </label>
+            <input type="password" name="password" class='form-control'><br>
+        </div>
+    <p><a href="/registration/"><i class="fa-solid fa-user-plus"> Create New Account to click here..</i></a></p>
+        <button type="submit" class='dtn btn-primary'><i class="fa-solid fa-face-sad">Login</i></button><br>
+
+        
+    </form>
+
+</div>
+
+<!-- <h1>Form login</h1>
+<h2>check</h2>
+<h1>form login</h1>
+<form method="POST" novalidate>
+    {% csrf_token %}
+    <h2>Login</h2>
+    {{form.as_p}}
+    <input type="submit" value="Login" />
+</form> -->
+
+
+<!-- <a href="/registration/">Registration</a> <br> -->
+<!-- <a href="/create_post/">Create Post</a><br>
+<a href="/show_post/">Show Post</a><br>
+<a href="/show_data/">Show User</a> -->
+<br><br><br>
+
+
+
+{% endblock %}

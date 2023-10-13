@@ -1,0 +1,28 @@
+<!-- post_detail.html (Template) -->
+<!-- Display post content here -->
+<!-- <h2>comment_post.html</h2> -->
+<!-- Like Button -->
+<form method="post" action="{% url 'like_post' post_id=post.id %}">
+    {% csrf_token %}
+    <button type="submit">
+        {% if request.user in post.likes.all %}
+            Unlike
+        {% else %}
+            Like
+        {% endif %}
+    </button>
+</form>
+
+<!-- Comment Section -->
+<div>
+    {% for comment in post.comments.all %}
+        <p>{{ comment.user.username }}: {{ comment.text }}</p>
+    {% endfor %}
+</div>
+
+<!-- Comment Form -->
+<form method="post" action="{% url 'comment_post' post_id=post.id %}">
+    {% csrf_token %}
+    {{ form.text }}
+    <button type="submit">Comment</button>
+</form>

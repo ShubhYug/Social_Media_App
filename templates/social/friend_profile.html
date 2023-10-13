@@ -1,0 +1,49 @@
+{% extends "social/base.html" %}
+
+{% block content %} 
+
+
+<br>
+
+<div class="container box_1620">
+    <div class="banner_inner d-flex align-items-center">
+        <div class="banner_content">
+            <div class="media">
+                <div class="d-flex mb-9">
+                    {% for user in form %}
+                    <img src="{{ user.profile_image.url }}" width="450" class="rounded-circle" height="500" alt="wait image is loding...">
+                    <!-- <div class="col-md-3 col-sm-3">
+                        <a href="{% url 'send_request' user.id %}"><button class="btn btn-primary pull-right"><i class="fa-solid fa-user-plus">Add Friend</i></button></a>
+                    </div> -->
+                    {% endfor %}
+                    
+                </div>
+                <div class="media-body">
+                    <div class="personal_text">
+                        <h6><i class="fa-solid fa-hands-asl-interpreting">Hello Everybody, i am</i></h6>
+                        {% for form in form1 %}  
+                            <h2><i class="fa-solid ">{{ form.first_name }} {{ form.last_name }}</i></h2>
+                        {% endfor %}
+                        {% for user in form %}
+                        <h4><i class="fa-solid fa-briefcase">{{ user.work }}</i></h4>
+                        <p><i class="fa-regular fa-newspaper">{{ user.bio }}</i></p>
+                        <ul class="list basic_info">
+                            <li><a href="#"><i class="fa-solid fa-calendar-days"> 1st Sep, 2023</i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-phone"> +91-{{ user.contact }}</i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-hand-holding-heart">{{ user.relationship }} </i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-user-graduate"> {{ user.education }}</i></a></li>
+                            <li><a href="#"><i class="fa-solid fa-football"> {{ user.hobbies }}</i></a></li>
+                        </ul>
+                        <ul class="list personal_social">
+                        <li><a href="#"><i class="fa fa-facebook"></i>{{ user.link }}</a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
